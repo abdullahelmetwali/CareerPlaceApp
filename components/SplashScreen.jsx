@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { Image, View, StyleSheet, Animated, Easing } from "react-native"
 
 const SplashScreen = () => {
-    const shape = require('../assets/images/shape-one.png');
+    const shape = require('../assets/images/shape.png');
     const careerLogo = require('../assets/images/career-place.png');
     const navigate = useNavigation();
     const rotatedAnimate = useRef(new Animated.Value(0)).current;

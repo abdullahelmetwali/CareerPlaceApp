@@ -1,43 +1,78 @@
-import { Text, StyleSheet, SafeAreaView, Pressable, Image } from "react-native";
+import { useNavigation } from "expo-router";
+import { useState } from "react";
+import { Text, StyleSheet, Pressable, Image, View, Platform } from "react-native";
+import Button from "./UI/Button";
 
 const OnBoarding = () => {
+    const navigate = useNavigation();
+    const [nowView, setNowView] = useState(0);
+    const allViews = [
+        {
+            title: `Welcome ${'\n'} to careerspace`,
+            img: require('../assets/images/first-view.png'),
+            backgroundColor: '#DCC1FF',
+        },
+        {
+            title: `Get support in ${'\n'} your new${'\n'}career`,
+            img: require('../assets/images/second-view.png'),
+            backgroundColor: '#F7CE45',
+        },
+        {
+            title: `Learn and ${'\n'} practice`,
+            img: require('../assets/images/third-view.png'),
+            backgroundColor: '#AB93E0',
+        },
+        {
+            title: `Let's start ${'\n'} your career`,
+            img: require('../assets/images/fourth-view.png'),
+            backgroundColor: '#DCC1FF',
+        },
+    ];
     return (
-        <SafeAreaView style={styles.container}>
+        <View style={[styles.container, { backgroundColor: allViews[nowView].backgroundColor }]}>
+            <Text style={styles.title}>
+                {allViews[nowView].title}
+            </Text>
             <Image
-                source={require('../assets/images/career-place.png')}
-                style={styles.img}
+                source={allViews[nowView].img}
+                style={[styles.img, { resizeMode: 'contain', marginTop: 20 }]}
             />
-            <Pressable
-                style={styles.btn}
-            >
-                <Text style={styles.txt}>
-                    Next
-                </Text>
-            </Pressable>
-        </SafeAreaView>
+            {
+                nowView === allViews.length - 1
+                    ?
+                    <View style={{ flexDirection: 'column', gap: 8 }}>
+                        <Button text="Sign in" pressStyle={[styles.lastViewBtn, { backgroundColor: '#FFFD82' }]} OnPress={() => navigate.navigate('Login')} />
+                        <Button text="Sign up" pressStyle={[styles.lastViewBtn, { backgroundColor: '#ffffff' }]} OnPress={() => navigate.navigate('Register')} />
+                    </View>
+                    :
+                    <Button text="Next" OnPress={() => setNowView(prev => prev + 1)} pressStyle={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 100 : 140, }} />
+            }
+        </View>
     )
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'start',
         alignItems: 'center',
+        paddingTop: Platform.OS === 'ios' ? 90 : 120,
     },
-    btn: {
-        backgroundColor: 'transparent',
-        borderColor: 'black',
-        borderWidth: 1,
-        borderRadius: 24,
-        paddingVertical: 7,
-        paddingHorizontal: 40,
-    },
-    txt: {
-        fontSize: 20,
-        letterSpacing: 2,
+    title: {
+        fontSize: 30,
+        fontWeight: 'bold',
+        textAlign: 'center',
         fontFamily: 'acorn-semib',
+        letterSpacing: -0.5,
+        lineHeight: 30
     },
-    img: {
-        margin: 20,
+    lastViewBtn: {
+        position: 'relative',
+        bottom: 0,
+        borderColor: 'none',
+        borderWidth: 0,
+        width: 240,
+        paddingVertical: 10,
     }
 });
 export default OnBoarding;
