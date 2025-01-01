@@ -2,11 +2,11 @@ import { BtnProps } from "@/interfaces/Types";
 import { Pressable, StyleSheet, Text, } from "react-native";
 
 const Button: React.FC<BtnProps> =
-    ({ text, OnPress, pressStyle, btnStyle }) => {
+    ({ OnPress, pressStyle, btnStyle, children }) => {
         return (
             <Pressable style={[styles.btn, pressStyle]} onPress={OnPress}>
                 <Text style={[styles.btnTxt, btnStyle]}>
-                    {text}
+                    {children}
                 </Text>
             </Pressable>
         )

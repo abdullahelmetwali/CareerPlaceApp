@@ -1,16 +1,11 @@
-// import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-// import { Stack } from 'expo-router';
-// import * as SplashScreen from 'expo-splash-screen';
-// import { StatusBar } from 'expo-status-bar';
-// import { useEffect } from 'react';
-// import 'react-native-reanimated';
 import OnBoarding from '@/components/OnBoarding';
 import SplashScreen from '@/components/SplashScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '@/screens/Home';
+import Home from '@/screens/Home';
 import Login from '@/screens/Login';
 import Register from '@/screens/Register';
+import Profile from '@/screens/Profile';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,15 +17,17 @@ export default function RootLayout() {
   });
 
   if (!loaded) {
-    return null;
+    return <SplashScreen />;
   }
+
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Splash" component={SplashScreen} />
       <Stack.Screen name="OnBoard" component={OnBoarding} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Profile" component={Profile} />
     </Stack.Navigator>
   );
 }

@@ -1,13 +1,13 @@
+import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "expo-router";
 import React, { useEffect, useRef } from "react";
 import { Image, View, StyleSheet, Animated, Easing } from "react-native"
 
 const SplashScreen = () => {
+    const navigation = useNavigation();
     const shape = require('../assets/images/shape.png');
     const careerLogo = require('../assets/images/career-place.png');
-    const navigate = useNavigation();
     const rotatedAnimate = useRef(new Animated.Value(0)).current;
-
     useEffect(() => {
         Animated.timing(rotatedAnimate, {
             toValue: 1,
@@ -15,13 +15,20 @@ const SplashScreen = () => {
             easing: Easing.ease,
             useNativeDriver: true,
         }).start();
-    }, [rotatedAnimate]);
 
-    useEffect(() => {
-        setTimeout(() => {
-            navigate.navigate('OnBoard');
-        }, 1200);
-    }, [navigate]);
+        // Delay navigation until after animation completes using setTimeout
+        const timer = setTimeout(async () => {
+            const user = await SecureStore.getItemAsync('usr') || null;
+            if (user) {
+                navigation.navigate('Profile');
+            } else {
+                navigation.navigate('OnBoard');
+            }
+        }, 750); // Delay for the duration of the animation (750ms)
+
+        return () => clearTimeout(timer); // Clear the timer on component unmount
+    }, [rotatedAnimate, navigation]);
+
     const rotateTop = rotatedAnimate.interpolate({
         inputRange: [0, 1],
         outputRange: ['0deg', '-180deg']

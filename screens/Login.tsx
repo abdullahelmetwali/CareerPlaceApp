@@ -1,15 +1,40 @@
 import Button from "@/components/UI/Button";
-import { Colors } from "@/constants/Colors";
+import { whatMode } from "@/constants/Colors";
+import { auth } from "@/firebase/config";
+import * as SecureStore from 'expo-secure-store';
+import { useNavigation } from "expo-router";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
 
 const Login: React.FC = () => {
-    const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const navigation = useNavigation();
     const [usrDT, setUsrDT] = useState<{ email: string, password: string }>({
         email: '',
         password: ''
     });
+    const [err, setErr] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+
+    const submitFunc = async () => {
+        if (usrDT.email === '' || usrDT.password === '') {
+            Alert.alert('Error', 'Please fill all the fields', [{ text: 'OK' }], { cancelable: true });
+            return;
+        } else {
+            try {
+                setIsLoading(true);
+                const response = await signInWithEmailAndPassword(auth, usrDT.email, usrDT.password);
+                if (response.user) {
+                    await SecureStore.setItemAsync('usr', JSON.stringify(response.user));
+                    navigation.navigate('Profile' as never);
+                }
+            } catch (error) {
+                setErr(error ? 'Please , check your email or password' : 'An error occurred');
+            } finally {
+                setIsLoading(false);
+            }
+        }
+    }
     return (
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
             <SafeAreaView style={[styles.main, { backgroundColor: whatMode.background }]}>
@@ -17,6 +42,7 @@ const Login: React.FC = () => {
                     <Text style={[styles.introTxt, { color: whatMode.text }]}>
                         Welcome 👋
                     </Text>
+                    {err ? <Text style={styles.errTxt}>{err}</Text> : null}
                 </View>
                 <KeyboardAvoidingView
                     behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -49,7 +75,9 @@ const Login: React.FC = () => {
                             secureTextEntry={true}
                         />
                     </View>
-                    <Button text="Submit" OnPress={() => console.log(usrDT.email, usrDT.password)} pressStyle={styles.submitBtn} btnStyle={[]} />
+                    <Button OnPress={submitFunc} pressStyle={styles.submitBtn} btnStyle={{ color: 'black' }} >
+                        {isLoading ? <ActivityIndicator size={30} color={`#fff`} /> : 'Submit'}
+                    </Button>
                 </KeyboardAvoidingView>
             </SafeAreaView>
         </TouchableWithoutFeedback>
@@ -65,6 +93,13 @@ const styles = StyleSheet.create({
     introTxt: {
         margin: 10,
         fontSize: 30,
+        fontWeight: 'bold',
+        fontFamily: 'acorn-semib',
+        textAlign: 'center'
+    },
+    errTxt: {
+        color: 'red',
+        fontSize: 18,
         fontWeight: 'bold',
         fontFamily: 'acorn-semib',
         textAlign: 'center'
@@ -95,6 +130,6 @@ const styles = StyleSheet.create({
         fontFamily: 'acorn-semib',
         fontWeight: 'bold',
         borderColor: 'transparent'
-    }
+    },
 })
 export default Login;
