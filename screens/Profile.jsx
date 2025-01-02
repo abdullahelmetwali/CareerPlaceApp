@@ -23,7 +23,7 @@ const Profile = () => {
     }, []);
 
     const whatView = {
-        Statics: <Statics />,
+        Statics: <Statics usrname={usrName} />,
         Portfolio: <Portfolio />,
         Reviews: <Reviews />,
         default: <Statics />,
@@ -40,26 +40,24 @@ const Profile = () => {
                     <Image source={profileImg} style={styles.profileImg} />
                     <AcornText style={{ fontSize: 24 }} children={usrName} />
                 </View>
-                <View style={styles.centerBox}>
-                    <View style={[styles.userInfo, { borderColor: whatMode.text }]}>
-                        <Pressable onPress={() => setView('Statics')}>
-                            <AcornText
-                                style={[view === 'Statics' ? { backgroundColor: '#D2FF1F', color: '#00' } : null,
-                                styles.userInfoTxt]} children={"Statics"} />
-                        </Pressable>
+                <View style={[styles.userInfo, { borderColor: whatMode.text }]}>
+                    <Pressable onPress={() => setView('Statics')}>
+                        <AcornText
+                            style={[view === 'Statics' ? { backgroundColor: '#D2FF1F', color: '#000' } : null,
+                            styles.userInfoTxt]} children={"Statics"} />
+                    </Pressable>
 
-                        <Pressable onPress={() => setView('Portfolio')}>
-                            <AcornText
-                                style={[view === 'Portfolio' ? { backgroundColor: '#D2FF1F', color: '#00' } : null,
-                                styles.userInfoTxt]} children={"Portfolio"} />
-                        </Pressable>
+                    <Pressable onPress={() => setView('Portfolio')}>
+                        <AcornText
+                            style={[view === 'Portfolio' ? { backgroundColor: '#D2FF1F', color: '#000' } : null,
+                            styles.userInfoTxt]} children={"Portfolio"} />
+                    </Pressable>
 
-                        <Pressable onPress={() => setView('Reviews')}>
-                            <AcornText
-                                style={[view === 'Reviews' ? { backgroundColor: '#D2FF1F', color: '#00' } : null,
-                                styles.userInfoTxt]} children={"Reviews"} />
-                        </Pressable>
-                    </View>
+                    <Pressable onPress={() => setView('Reviews')}>
+                        <AcornText
+                            style={[view === 'Reviews' ? { backgroundColor: '#D2FF1F', color: '#000' } : null,
+                            styles.userInfoTxt]} children={"Reviews"} />
+                    </Pressable>
                 </View>
                 <View>
                     {whatView[view] || whatView.default}
@@ -94,10 +92,11 @@ const styles = StyleSheet.create({
         borderWidth: 1.5,
         borderRadius: 35,
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         gap: 20,
-        padding: 2
+        padding: 2.8,
+        marginVertical: 15
     },
     userInfoTxt: {
         fontSize: 19,
