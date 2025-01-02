@@ -1,5 +1,5 @@
 import Button from "@/components/UI/Button";
-import { whatMode } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import { auth } from "@/firebase/config";
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "expo-router";
@@ -9,6 +9,8 @@ import { ActivityIndicator, Keyboard, KeyboardAvoidingView, Platform, SafeAreaVi
 
 const Register = () => {
     const navigation = useNavigation();
+    const mode = useColorScheme();
+    const whatMode = Colors[mode ? mode : 'dark'];
     const [usrDT, setUsrDT] = useState<{ email: string, password: string, username: string, fullname: string }>({
         email: '',
         password: '',

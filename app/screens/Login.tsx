@@ -1,14 +1,16 @@
 import Button from "@/components/UI/Button";
-import { whatMode } from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 import { auth } from "@/firebase/config";
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from "react-native";
+import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 
 const Login: React.FC = () => {
     const navigation = useNavigation();
+    const mode = useColorScheme();
+    const whatMode = Colors[mode ? mode : 'dark'];
     const [usrDT, setUsrDT] = useState<{ email: string, password: string }>({
         email: '',
         password: ''

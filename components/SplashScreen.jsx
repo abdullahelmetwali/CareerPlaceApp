@@ -1,6 +1,6 @@
 import * as SecureStore from 'expo-secure-store';
 import { useNavigation } from "expo-router";
-import React, { useEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { Image, View, StyleSheet, Animated, Easing } from "react-native"
 
 const SplashScreen = () => {
@@ -9,13 +9,14 @@ const SplashScreen = () => {
     const shape = require('../assets/images/shape.png');
     const careerLogo = require('../assets/images/career-place.png');
     const rotatedAnimate = useRef(new Animated.Value(0)).current;
-    useEffect(() => {
+
+    useLayoutEffect(() => {
         Animated.timing(rotatedAnimate, {
             toValue: 1,
             duration: 750,
             easing: Easing.ease,
             useNativeDriver: true,
-        }).start();
+        }).start()
 
         setTimeout(async () => {
             await SecureStore.getItemAsync('usr') ?
