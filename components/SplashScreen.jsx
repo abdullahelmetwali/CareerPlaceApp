@@ -5,6 +5,7 @@ import { Image, View, StyleSheet, Animated, Easing } from "react-native"
 
 const SplashScreen = () => {
     const navigation = useNavigation();
+
     const shape = require('../assets/images/shape.png');
     const careerLogo = require('../assets/images/career-place.png');
     const rotatedAnimate = useRef(new Animated.Value(0)).current;
@@ -16,18 +17,11 @@ const SplashScreen = () => {
             useNativeDriver: true,
         }).start();
 
-        // Delay navigation until after animation completes using setTimeout
-        const timer = setTimeout(async () => {
-            const user = await SecureStore.getItemAsync('usr') || null;
-            if (user) {
-                navigation.navigate('Profile');
-            } else {
-                navigation.navigate('OnBoard');
-            }
-        }, 750); // Delay for the duration of the animation (750ms)
-
-        return () => clearTimeout(timer); // Clear the timer on component unmount
-    }, [rotatedAnimate, navigation]);
+        setTimeout(async () => {
+            await SecureStore.getItemAsync('usr') ?
+                navigation.navigate('Profile') : navigation.navigate('OnBoard');
+        }, 1200);
+    }, [rotatedAnimate]);
 
     const rotateTop = rotatedAnimate.interpolate({
         inputRange: [0, 1],

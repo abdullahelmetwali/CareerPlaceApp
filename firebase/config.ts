@@ -1,6 +1,5 @@
-import { getReactNavigationConfig } from "expo-router/build/getReactNavigationConfig";
 import { initializeApp } from "firebase/app";
-import { getAuth, initializeAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAXSwjNbvErgI4xmAuzjHwmE1JysZ_yppY",
