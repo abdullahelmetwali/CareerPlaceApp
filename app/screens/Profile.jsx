@@ -2,7 +2,7 @@ import { Image, Platform, Pressable, ScrollView, StyleSheet, useColorScheme, Vie
 import { Bolt, Bell } from "lucide-react-native"
 import { Colors } from "@/constants/Colors";
 import AcornText from "@/components/UI/AcornText";
-import * as SecureStorge from 'expo-secure-store'
+import * as SecureStorge from 'expo-secure-store';
 import { useEffect, useState } from "react";
 import Statics from "@/components/ProfileComponents/Statics";
 import Portfolio from "@/components/ProfileComponents/Portfolio";

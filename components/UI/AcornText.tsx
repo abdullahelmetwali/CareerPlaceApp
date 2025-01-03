@@ -1,13 +1,10 @@
-import { Colors } from "@/constants/Colors";
 import { AcornTextProps } from "@/interfaces/Types";
 import React from "react";
-import { StyleSheet, Text, useColorScheme } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 const AcornText: React.FC<AcornTextProps> = ({ children, style }) => {
-    const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
     return (
-        <Text style={[styles.txt, style, { color: whatMode.text }]} >
+        <Text style={[styles.txt, style]} >
             {children}
         </Text>
     )
