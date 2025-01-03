@@ -6,7 +6,7 @@ import React from "react";
 import { Header } from "@/interfaces/Types";
 
 const ScreenHeader: React.FC<Header> =
-    ({ chevColor, head, rightComponent }) => {
+    ({ chevColor, head, rightComponent, style }) => {
         const route = useRouter();
         return (
             <View style={{
@@ -22,7 +22,7 @@ const ScreenHeader: React.FC<Header> =
                 >
                     <ChevronLeft size={24} color={chevColor} />
                 </Pressable>
-                <AcornText children={head} style={[{ fontSize: 23, marginLeft: rightComponent ? 0 : 110 }]} />
+                <AcornText children={head} style={[{ fontSize: 23, marginLeft: rightComponent ? 0 : 110 }, style]} />
                 {rightComponent}
             </View>
         )

@@ -3,12 +3,13 @@ import { Bolt, Bell } from "lucide-react-native"
 import { Colors } from "@/constants/Colors";
 import AcornText from "@/components/UI/AcornText";
 import * as SecureStorge from 'expo-secure-store';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Statics from "@/components/ProfileComponents/Statics";
 import Portfolio from "@/components/ProfileComponents/Portfolio";
 import Reviews from "@/components/ProfileComponents/Reviews";
+import { NavigationProp } from "@react-navigation/native";
 
-const Profile = ({ navigation }) => {
+const Profile: React.FC<{ navigation: NavigationProp<any> }> = ({ navigation }) => {
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const profileImg = require('../../assets/images/profile-img.jpg');
@@ -29,7 +30,7 @@ const Profile = ({ navigation }) => {
         Statics: <Statics usrname={usrName} />,
         Portfolio: <Portfolio />,
         Reviews: <Reviews />,
-        default: <Statics usrname={usrName} whatMode={whatMode} />,
+        default: <Statics usrname={usrName} />,
     }
     return (
         <ScrollView style={[{ backgroundColor: whatMode.background }]} contentContainerStyle={styles.container}>
@@ -66,7 +67,7 @@ const Profile = ({ navigation }) => {
                 </Pressable>
             </View>
             <ScrollView>
-                {whatView[view] || whatView.default}
+                {whatView[view as 'Statics' || 'Portfolio' || 'Reviews'] || whatView.default}
             </ScrollView>
         </ScrollView>
     )

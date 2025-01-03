@@ -2,7 +2,7 @@ import { Text } from "react-native";
 
 const AboutApp = () => {
     return (
-        <Text>
+        <Text style={{ fontSize: 30 }}>
             AboutApp
         </Text>
     )

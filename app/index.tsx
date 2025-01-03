@@ -1,10 +1,11 @@
-import { Image, StyleSheet, Platform, View, Text } from 'react-native';
-import Intro from '@/components/SplashScreen';
+import { StyleSheet, View, Text } from 'react-native';
 
 export default function HomeScreen() {
     return (
         <View style={styles.container}>
-            Home Screen
+            <Text>
+                Welcome to React Native
+            </Text>
         </View>
     );
 }

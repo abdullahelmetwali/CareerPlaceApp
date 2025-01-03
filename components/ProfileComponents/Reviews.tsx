@@ -5,7 +5,7 @@ import React from "react";
 
 const Reviews: React.FC = () => {
     const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const whatMode = Colors[mode || 'dark'];
     return (
         <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center', flex: 1, marginVertical: 20 }}>
             {

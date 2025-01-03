@@ -6,7 +6,7 @@ import React from "react";
 
 const Analysis = () => {
     const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const whatMode = Colors[mode || 'dark'];
     const analysis = [
         { value: 35 },
         { value: 61 },
@@ -39,12 +39,12 @@ const Analysis = () => {
     return (
         <View style={{ flexDirection: 'row', gap: 25, width: '100%', padding: 10 }}>
             <View style={styles.numbersBox}>
-                <AcornText children="100" style={{ fontSize: 17 }} />
-                <AcornText children="80" style={{ fontSize: 17 }} />
-                <AcornText children="60" style={{ fontSize: 17 }} />
-                <AcornText children="40" style={{ fontSize: 17 }} />
-                <AcornText children="20" style={{ fontSize: 17 }} />
-                <AcornText children="0" style={{ fontSize: 17 }} />
+                <AcornText children="100" style={{ fontSize: 17, color: whatMode.text }} />
+                <AcornText children="80" style={{ fontSize: 17, color: whatMode.text }} />
+                <AcornText children="60" style={{ fontSize: 17, color: whatMode.text }} />
+                <AcornText children="40" style={{ fontSize: 17, color: whatMode.text }} />
+                <AcornText children="20" style={{ fontSize: 17, color: whatMode.text }} />
+                <AcornText children="0" style={{ fontSize: 17, color: whatMode.text }} />
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', width: '80%' }}>
                 {theAnalysisLines}

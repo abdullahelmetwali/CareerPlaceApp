@@ -5,11 +5,11 @@ import { Colors } from "@/constants/Colors";
 
 const Portfolio: React.FC = () => {
     const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const whatMode = Colors[mode || 'dark'];
     return (
         <ScrollView style={{ flex: 1, backgroundColor: whatMode.background }}>
             <View style={{ alignItems: 'center', flexDirection: 'row', gap: 10, padding: 15 }}>
-                <AcornText children="Job Title" style={{ fontSize: 23 }} />
+                <AcornText children="Job Title" style={{ fontSize: 23, color: whatMode.text }} />
                 <Text style={{ fontSize: 15, color: whatMode.muted }}>
                     Location
                 </Text>

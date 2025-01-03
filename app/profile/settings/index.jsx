@@ -12,14 +12,16 @@ import EditProfile from "@/components/SettingsComponents/EditProfile";
 import AboutApp from "@/components/SettingsComponents/AboutApp";
 import Payment from "@/components/SettingsComponents/Payment";
 import Support from "@/components/SettingsComponents/Support";
+import { useNavigation } from "expo-router";
 
-const Settings: React.FC<{ navigation: NavigationProp<any>, route: { params: { usrName: string } } }> =
-    ({ navigation, route }) => {
+const Settings =
+    ({ route }) => {
+        const navigation = useNavigation()
         const { usrName } = route.params;
         const mode = useColorScheme();
         const whatMode = Colors[mode || 'dark'];
-        const profileImg = require('../../assets/images/profile-img.jpg');
-        const [seenModal, setSeenModal] = useState<{ modal: string, visible: boolean }>({
+        const profileImg = require('../../../assets/images/profile-img.jpg');
+        const [seenModal, setSeenModal] = useState < { modal: string, visible: boolean } > ({
             modal: '',
             visible: false
         });
@@ -28,7 +30,7 @@ const Settings: React.FC<{ navigation: NavigationProp<any>, route: { params: { u
             try {
                 await signOut(auth);
                 await SecureStorge.deleteItemAsync('usr');
-                navigation.navigate('Home');
+                navigation.navigate('home')
             } catch (err) {
                 Alert.alert('Error', 'Something went wrong', [{ text: 'OK' }], { cancelable: true })
             }
@@ -108,7 +110,7 @@ const Settings: React.FC<{ navigation: NavigationProp<any>, route: { params: { u
                     >
                         <View style={styles.modalOverlay}>
                             <View style={[styles.moduleContent, { backgroundColor: whatMode.background }]}>
-                                {modals[seenModal.modal as 'EditProfile' | 'Payment' | 'Support' | 'AboutTheApp']}
+                                {modals[seenModal.modal]}
                             </View>
                         </View>
                     </TouchableWithoutFeedback>

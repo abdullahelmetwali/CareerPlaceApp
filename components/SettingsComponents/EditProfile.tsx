@@ -2,7 +2,7 @@ import { Text } from "react-native"
 
 const EditProfile = () => {
     return (
-        <Text>
+        <Text style={{ fontSize: 30 }}>
             EditProfile
         </Text>
     )

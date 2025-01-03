@@ -57,7 +57,6 @@ const Notifications: React.FC<{ navigation: NavigationProp<any> }> =
             },
         ];
 
-
         return (
             <View style={{ flex: 1, backgroundColor: whatMode.background, paddingTop: 25 }}>
                 <FlatList

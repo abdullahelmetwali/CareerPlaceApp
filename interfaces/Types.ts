@@ -15,12 +15,12 @@ export interface AcornTextProps {
 
 export interface Notification {
     id: number,
-    title: string,
     description: string
 }
 
 export interface Header {
     chevColor: string,
     head: string,
-    rightComponent: React.ReactNode
+    rightComponent: React.ReactNode,
+    style: StyleProp<TextStyle>
 }

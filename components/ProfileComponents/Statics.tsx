@@ -8,7 +8,7 @@ import { Colors } from "@/constants/Colors";
 
 const Statics: React.FC<{ usrname: string }> = ({ usrname }) => {
     const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const whatMode = Colors[mode || 'dark'];
     return (
         <>
             <ScrollView contentContainerStyle={[styles.cvContainer, {

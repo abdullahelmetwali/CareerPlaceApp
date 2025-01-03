@@ -6,7 +6,7 @@ import { Pressable, StyleSheet, Text, useColorScheme, View } from "react-native"
 
 const NotificationBox: React.FC<{ notification: Notification }> = ({ notification }) => {
     const mode = useColorScheme();
-    const whatMode = Colors[mode ? mode : 'dark'];
+    const whatMode = Colors[mode || 'dark'];
     return (
         <View style={{ padding: 5 }}>
             <View style={styles.notificationBox}>
