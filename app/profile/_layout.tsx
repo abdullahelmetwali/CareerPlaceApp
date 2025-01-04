@@ -1,15 +1,11 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Settings from "./settings/index";
-import Notifications from "./notifications/index";
+import { Stack } from "expo-router";
 
-const ProfileStack = createNativeStackNavigator();
-
-const ProfileLayout: React.FC = () => {
+export default function ProfileLayout() {
     return (
-        <ProfileStack.Navigator>
-            <ProfileStack.Screen name="settings" component={Settings} />
-            <ProfileStack.Screen name="notifications" component={Notifications} />
-        </ProfileStack.Navigator>
+        <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="index" options={{ title: 'Profile' }} />
+            <Stack.Screen name="settings/index" options={{ title: 'Settings' }} />
+            <Stack.Screen name="notifications/index" options={{ title: 'Notifications' }} />
+        </Stack>
     )
 }
-export default ProfileLayout;

@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import { Image, Platform, Pressable, ScrollView, StyleSheet, useColorScheme, View } from "react-native"
 import { Bolt, Bell } from "lucide-react-native"
 import { Colors } from "@/constants/Colors";
@@ -7,9 +8,9 @@ import React, { useEffect, useState } from "react";
 import Statics from "@/components/ProfileComponents/Statics";
 import Portfolio from "@/components/ProfileComponents/Portfolio";
 import Reviews from "@/components/ProfileComponents/Reviews";
-import { NavigationProp } from "@react-navigation/native";
 
-const Profile: React.FC<{ navigation: NavigationProp<any> }> = ({ navigation }) => {
+const Profile: React.FC = () => {
+    const router = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const profileImg = require('../../assets/images/profile-img.jpg');
@@ -35,11 +36,14 @@ const Profile: React.FC<{ navigation: NavigationProp<any> }> = ({ navigation }) 
     return (
         <ScrollView style={[{ backgroundColor: whatMode.background }]} contentContainerStyle={styles.container}>
             <View style={styles.flexBox}>
-                <Pressable onPress={() => navigation.navigate('Settings', { usrName: usrName })}>
+                <Pressable onPress={() => router.push({
+                    pathname: '/profile/settings',
+                    params: { usrName: usrName }
+                })}>
                     <Bolt size={29} color={whatMode.text} />
                 </Pressable>
                 <AcornText style={{ fontSize: 23, color: whatMode.text }} children={"My Profile"} />
-                <Pressable onPress={() => navigation.navigate('Notifications')}>
+                <Pressable onPress={() => router.push('/profile/notifications')}>
                     <Bell color={whatMode.text} size={26} />
                 </Pressable>
             </View>
@@ -112,5 +116,6 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
         borderRadius: 30
     }
-})
+});
+
 export default Profile;

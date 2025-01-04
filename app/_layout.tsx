@@ -1,7 +1,8 @@
 import { useFonts } from 'expo-font';
-import { Stack, useNavigation } from 'expo-router';
+import { Tabs, useNavigation } from 'expo-router';
 import * as SecureStorage from 'expo-secure-store';
-import { useEffect, useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
+import { Home, LogIn, User, UserPlus } from 'lucide-react-native';
 
 export default function RootLayout() {
   const navigation = useNavigation();
@@ -17,11 +18,11 @@ export default function RootLayout() {
       if (user) {
         navigation.navigate('index' as never);
       } else {
-        navigation.navigate('auth/login/index.tsx' as never);
+        navigation.navigate('auth/login/index' as never);
       }
     };
     seeIfUser();
-  }, [])
+  }, []);
 
   if (!loaded) {
     return null;
@@ -29,9 +30,63 @@ export default function RootLayout() {
 
   return (
     <>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-      </Stack>
+      <Tabs
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: 'black',
+            borderTopWidth: 0,
+            margin: 5,
+            position: 'absolute',
+            borderRadius: 30,
+            height: 50,
+            alignItems: 'center',
+          },
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'gray',
+          tabBarLabelStyle: {
+            display: 'none',
+          },
+          tabBarIconStyle: {
+            padding: 0,
+            margin: 0
+          }
+        }}
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Home color={color} size={size} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="auth/login/index"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <LogIn color={color} size={size} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="auth/register/index"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <UserPlus color={color} size={size} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <User color={color} size={size} />
+            ),
+            headerShown: false
+          }}
+        />
+      </Tabs>
     </>
   );
 }
