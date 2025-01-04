@@ -2,7 +2,7 @@ import { Text } from "react-native";
 
 const Careers = () => {
     return (
-        <Text>
+        <Text style={{ margin: 50 }}>
             Careers
         </Text>
     )

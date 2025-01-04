@@ -13,7 +13,7 @@ const Profile: React.FC = () => {
     const router = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
-    const profileImg = require('../../assets/images/profile-img.jpg');
+    const profileImg = require('@/assets/images/profile-img.jpg');
     const [usrName, setUsrName] = useState('Guest-777');
     const [view, setView] = useState('Statics');
 

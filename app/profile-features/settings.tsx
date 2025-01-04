@@ -18,7 +18,7 @@ const Settings: React.FC = () => {
     const { usrName } = useLocalSearchParams();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
-    const profileImg = require('../../../assets/images/profile-img.jpg');
+    const profileImg = require('@/assets/images/profile-img.jpg');
     const [seenModal, setSeenModal] = useState({
         modal: '',
         visible: false
@@ -28,7 +28,7 @@ const Settings: React.FC = () => {
         try {
             await signOut(auth);
             await SecureStorge.deleteItemAsync('usr');
-            router.push({ pathname: '/' })
+            router.push({ pathname: '/index' })
         } catch (err) {
             Alert.alert('Error', 'Something went wrong', [{ text: 'OK' }], { cancelable: true })
         }

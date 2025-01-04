@@ -41,8 +41,8 @@ const OnBoarding = () => {
                 nowView === allViews.length - 1
                     ?
                     <View style={{ flexDirection: 'column', gap: 8 }}>
-                        <Button children={`Sign in`} pressStyle={[styles.lastViewBtn, { backgroundColor: '#FFFD82' }]} OnPress={() => navigate.navigate('Login')} />
-                        <Button children={`Sign up`} pressStyle={[styles.lastViewBtn, { backgroundColor: '#ffffff' }]} OnPress={() => navigate.navigate('Register')} />
+                        <Button children={`Sign in`} pressStyle={[styles.lastViewBtn, { backgroundColor: '#FFFD82' }]} OnPress={() => navigate.navigate('/login')} />
+                        <Button children={`Sign up`} pressStyle={[styles.lastViewBtn, { backgroundColor: '#ffffff' }]} OnPress={() => navigate.navigate('/register')} />
                     </View>
                     :
                     <Button children={`Next`} OnPress={() => setNowView(prev => prev + 1)} pressStyle={{ position: 'absolute', bottom: Platform.OS === 'ios' ? 100 : 140, }} />

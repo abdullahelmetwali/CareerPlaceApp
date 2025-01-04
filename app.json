@@ -11,9 +11,24 @@
       "resizeMode": "contain",
       "backgroundColor": "#D2FF1F"
     },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#D2FF1F",
+          "image": "./assets/images/career-place.png",
+          "imageWidth": 200,
+          "resizeMode": "contain"
+        }
+      ]
+    ],
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "adaptiveIcon" : {
+        "foregroundImage": "./assets/images/career-place.png",
+        "backgroundColor": "#D2FF1F"
+      }
     },
     "android": {
       "adaptiveIcon": {
