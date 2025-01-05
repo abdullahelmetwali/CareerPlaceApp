@@ -38,8 +38,3 @@ export interface Content {
     customers: number,
     favourite: boolean
 }
-
-export type SectionProps = {
-    title: string,
-    data: Content[]
-}
