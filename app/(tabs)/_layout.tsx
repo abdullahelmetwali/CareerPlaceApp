@@ -1,12 +1,13 @@
 import { useFonts } from 'expo-font';
-import { Stack, Tabs, useNavigation } from 'expo-router';
+import { Tabs, useNavigation } from 'expo-router';
 import * as SecureStorage from 'expo-secure-store';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { BriefcaseBusiness, CalendarRange, Pentagon, Search, UserRound } from 'lucide-react-native';
-import { Text } from 'react-native';
+import { AppContext } from '@/hooks/AppContext';
 
 export default function RootLayout() {
     const navigation = useNavigation();
+    const { setGlobalUsr } = useContext(AppContext);
     const [loaded] = useFonts({
         'acorn-semib': require('../../assets/fonts/Acorn-SemiBold.ttf'),
         'acorn-regular': require('../../assets/fonts/Acorn-Regular.ttf'),
@@ -17,6 +18,7 @@ export default function RootLayout() {
         try {
             const user = await SecureStorage.getItemAsync('usr');
             if (user) {
+                setGlobalUsr(JSON.parse(user).displayName.split(' ')[0]);
                 navigation.navigate('/' as never);
             } else {
                 navigation.navigate('/auth/login/index' as never);

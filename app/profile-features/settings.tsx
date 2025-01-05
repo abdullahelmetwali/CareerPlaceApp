@@ -1,7 +1,7 @@
 import AcornText from "@/components/UI/AcornText";
 import { Colors } from "@/constants/Colors";
 import { Bell, ChevronRight } from "lucide-react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Alert, Image, Modal, Pressable, ScrollView, StyleSheet, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 import * as SecureStorge from 'expo-secure-store'
 import ScreenHeader from "@/components/UI/ScreenHeader";
@@ -11,11 +11,12 @@ import EditProfile from "@/components/SettingsComponents/EditProfile";
 import AboutApp from "@/components/SettingsComponents/AboutApp";
 import Payment from "@/components/SettingsComponents/Payment";
 import Support from "@/components/SettingsComponents/Support";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
+import { AppContext } from "@/hooks/AppContext";
 
 const Settings: React.FC = () => {
     const router = useRouter();
-    const { usrName } = useLocalSearchParams();
+    const { globalUsr } = useContext(AppContext);
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const profileImg = require('@/assets/images/profile-img.jpg');
@@ -28,7 +29,7 @@ const Settings: React.FC = () => {
         try {
             await signOut(auth);
             await SecureStorge.deleteItemAsync('usr');
-            router.push({ pathname: '/index' })
+            router.push({ pathname: '/' })
         } catch (err) {
             Alert.alert('Error', 'Something went wrong', [{ text: 'OK' }], { cancelable: true })
         }
@@ -47,7 +48,7 @@ const Settings: React.FC = () => {
                 rightComponent={
                     <Pressable
                         accessibilityLabel="Go to Notifications"
-                        onPress={() => router.push('/profile/notifications')}>
+                        onPress={() => router.push('/profile-features/notifications')}>
                         <Bell color={whatMode.text} size={26} />
                     </Pressable>
                 }
@@ -56,7 +57,7 @@ const Settings: React.FC = () => {
             />
             <View style={styles.centerBox}>
                 <Image source={profileImg} style={styles.profileImg} />
-                <AcornText style={{ fontSize: 24, color: whatMode.text }} children={usrName} />
+                <AcornText style={{ fontSize: 24, color: whatMode.text }} children={globalUsr} />
             </View>
             <View style={{ gap: 5 }}>
 

@@ -24,3 +24,22 @@ export interface Header {
     rightComponent: React.ReactNode,
     style: StyleProp<TextStyle>
 }
+
+export type AppContextType = {
+    globalUsr: string,
+    setGlobalUsr: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface Content {
+    title: string,
+    salary: number,
+    rate: number,
+    hours: number,
+    customers: number,
+    favourite: boolean
+}
+
+export type SectionProps = {
+    title: string,
+    data: Content[]
+}

@@ -9,6 +9,7 @@ import Statics from "@/components/ProfileComponents/Statics";
 import Portfolio from "@/components/ProfileComponents/Portfolio";
 import Reviews from "@/components/ProfileComponents/Reviews";
 
+
 const Profile: React.FC = () => {
     const router = useRouter();
     const mode = useColorScheme();
@@ -36,14 +37,11 @@ const Profile: React.FC = () => {
     return (
         <ScrollView style={[{ backgroundColor: whatMode.background }]} contentContainerStyle={styles.container}>
             <View style={styles.flexBox}>
-                <Pressable onPress={() => router.push({
-                    pathname: '/profile/settings',
-                    params: { usrName: usrName }
-                })}>
+                <Pressable onPress={() => router.push('/profile-features/settings')}>
                     <Bolt size={29} color={whatMode.text} />
                 </Pressable>
                 <AcornText style={{ fontSize: 23, color: whatMode.text }} children={"My Profile"} />
-                <Pressable onPress={() => router.push('/profile/notifications')}>
+                <Pressable onPress={() => router.push('/profile-features/notifications')}>
                     <Bell color={whatMode.text} size={26} />
                 </Pressable>
             </View>
@@ -54,19 +52,19 @@ const Profile: React.FC = () => {
             <View style={[styles.userInfo, { borderColor: whatMode.text }]}>
                 <Pressable onPress={() => setView('Statics')}>
                     <AcornText
-                        style={[view === 'Statics' && { backgroundColor: '#003161', color: 'white' },
+                        style={[view === 'Statics' && styles.selectedView,
                         styles.userInfoTxt, { color: whatMode.text }]} children={"Statics"} />
                 </Pressable>
 
                 <Pressable onPress={() => setView('Portfolio')}>
                     <AcornText
-                        style={[view === 'Portfolio' && { backgroundColor: '#003161', color: 'white' },
+                        style={[view === 'Portfolio' && styles.selectedView,
                         styles.userInfoTxt, { color: whatMode.text }]} children={"Portfolio"} />
                 </Pressable>
 
                 <Pressable onPress={() => setView('Reviews')}>
                     <AcornText
-                        style={[view === 'Reviews' && { backgroundColor: '#003161', color: 'white' },
+                        style={[view === 'Reviews' && styles.selectedView,
                         styles.userInfoTxt, { color: whatMode.text }]} children={"Reviews"} />
                 </Pressable>
             </View>
@@ -115,7 +113,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingVertical: 5,
         borderRadius: 30
-    }
+    },
+    selectedView: { backgroundColor: '#003161', color: 'white' }
 });
 
 export default Profile;
