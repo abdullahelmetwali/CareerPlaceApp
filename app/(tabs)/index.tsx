@@ -6,46 +6,22 @@ import { Content } from '@/interfaces/Types';
 import { useRouter } from 'expo-router';
 import { Bell } from 'lucide-react-native';
 import { useContext } from 'react';
-import { FlatList, Text } from 'react-native';
-import { Image, Platform, Pressable, ScrollView } from 'react-native';
-import { StyleSheet, View, useColorScheme, SafeAreaView } from 'react-native';
+import { Image, Platform, Pressable, ScrollView, FlatList, StyleSheet, View, useColorScheme, SafeAreaView } from 'react-native';
 
 export default function HomeScreen() {
     const router = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
+    const db = require('@/json/db.json');
+    const courses: Content[] = db.courses;
+    const lectures: Content[] = db.lectures;
+    const onTop: Content[] = db.onTop;
     const profileImg = require('@/assets/images/profile-img.jpg');
     const { globalUsr } = useContext(AppContext);
     const trends = ['SWE', 'ReactNative', 'JavaScript', 'Game Dev', 'Marketing', 'UI/UX', 'TypeScript', 'Java 🍵'];
-    const contents: Content[] = [
-        {
-            title: 'Frontend Developer',
-            salary: 8000,
-            rate: 4.8,
-            hours: 44,
-            customers: 10000,
-            favourite: true
-        },
-        {
-            title: 'Software Developer',
-            salary: 8000,
-            rate: 4.8,
-            hours: 44,
-            customers: 10000,
-            favourite: false
-        },
-        {
-            title: 'Backend Developer',
-            salary: 8000,
-            rate: 4.8,
-            hours: 44,
-            customers: 10000,
-            favourite: true
-        },
-    ]
     return (
-        <SafeAreaView style={[styles.container, { backgroundColor: whatMode.background }]}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+        <SafeAreaView style={{ backgroundColor: whatMode.background, ...styles.container }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 9 }}>
                 <View style={{ flexDirection: 'row', gap: 12, alignItems: 'center' }}>
                     <Image source={profileImg} style={styles.profileImg} />
                     <AcornText children={`Hello ${globalUsr}`} style={{ color: whatMode.text, fontSize: 22 }} />
@@ -54,7 +30,7 @@ export default function HomeScreen() {
                     <Bell color={whatMode.text} size={26} />
                 </Pressable>
             </View>
-            <ScrollView style={{ width: '100%' }}>
+            <ScrollView style={{ width: '100%', padding: 9 }}>
                 <FlatList
                     style={{ paddingVertical: 10 }}
                     data={trends}
@@ -68,12 +44,29 @@ export default function HomeScreen() {
                     snapToInterval={200}
                     decelerationRate={'normal'}
                 />
+                {/* COURSES */}
                 <View style={{ paddingVertical: 15 }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 35 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 35, marginBottom: 10 }}>
                         <AcornText children={'Courses'} style={{ color: whatMode.text, fontSize: 24 }} />
                         <View style={styles.line}></View>
                     </View>
-                    <Section data={contents} />
+                    <Section data={courses} />
+                </View>
+                {/* LECTURES */}
+                <View style={{ paddingVertical: 15 }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 35, marginBottom: 10 }}>
+                        <AcornText children={'Lectures'} style={{ color: whatMode.text, fontSize: 24 }} />
+                        <View style={styles.line}></View>
+                    </View>
+                    <Section data={lectures} />
+                </View>
+                {/* ON TOP */}
+                <View style={{ paddingVertical: 15 }}>
+                    <View style={styles.titleBox}>
+                        <AcornText children={'On Top'} style={{ color: whatMode.text, fontSize: 24 }} />
+                        <View style={styles.line}></View>
+                    </View>
+                    <Section data={onTop} />
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -84,7 +77,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         position: 'relative',
-        padding: Platform.OS === 'ios' ? 20 : 15
+        paddingTop: Platform.OS === 'ios' ? 20 : 15,
+        paddingBottom: 70
     },
     profileImg: {
         width: 50,
@@ -107,10 +101,16 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginRight: 7
     },
+    titleBox: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginBottom: 10,
+    },
     line: {
         backgroundColor: '#a1a1aa',
         height: 1,
-        width: '64%',
+        width: 233,
         borderRadius: 10,
     }
 });

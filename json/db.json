@@ -1,0 +1,280 @@
+{
+    "courses": [
+        {
+            "title": "Frontend Developer",
+            "salary": 8000,
+            "rate": 4.8,
+            "hours": 40,
+            "customers": 100,
+            "favourite": true
+        },
+        {
+            "title": "Backend Developer",
+            "salary": 9500,
+            "rate": 4.7,
+            "hours": 38,
+            "customers": 85,
+            "favourite": false
+        },
+        {
+            "title": "Fullstack Developer",
+            "salary": 10500,
+            "rate": 4.9,
+            "hours": 42,
+            "customers": 120,
+            "favourite": true
+        },
+        {
+            "title": "Mobile Developer",
+            "salary": 8700,
+            "rate": 4.6,
+            "hours": 39,
+            "customers": 75,
+            "favourite": true
+        },
+        {
+            "title": "DevOps Engineer",
+            "salary": 11000,
+            "rate": 4.8,
+            "hours": 45,
+            "customers": 95,
+            "favourite": false
+        },
+        {
+            "title": "Data Scientist",
+            "salary": 12500,
+            "rate": 4.9,
+            "hours": 35,
+            "customers": 80,
+            "favourite": true
+        },
+        {
+            "title": "Content Writer",
+            "salary": 4500,
+            "rate": 4.5,
+            "hours": 30,
+            "customers": 150,
+            "favourite": false
+        },
+        {
+            "title": "Digital Marketer",
+            "salary": 5500,
+            "rate": 4.6,
+            "hours": 35,
+            "customers": 110,
+            "favourite": true
+        },
+        {
+            "title": "Virtual Assistant",
+            "salary": 3500,
+            "rate": 4.4,
+            "hours": 40,
+            "customers": 95,
+            "favourite": false
+        },
+        {
+            "title": "Online Tutor",
+            "salary": 4000,
+            "rate": 4.7,
+            "hours": 25,
+            "customers": 80,
+            "favourite": true
+        },
+        {
+            "title": "Graphic Designer",
+            "salary": 5000,
+            "rate": 4.5,
+            "hours": 32,
+            "customers": 70,
+            "favourite": false
+        },
+        {
+            "title": "Translator",
+            "salary": 4800,
+            "rate": 4.8,
+            "hours": 28,
+            "customers": 65,
+            "favourite": true
+        }
+    ],
+    "lectures": [
+        {
+            "title": "Python Basics",
+            "salary": 5000,
+            "rate": 4.7,
+            "hours": 40,
+            "customers": 18,
+            "favourite": true
+        },
+        {
+            "title": "React Web Dev",
+            "salary": 6000,
+            "rate": 4.9,
+            "hours": 50,
+            "customers": 15,
+            "favourite": true
+        },
+        {
+            "title": "JavaScript Pro",
+            "salary": 5500,
+            "rate": 4.8,
+            "hours": 45,
+            "customers": 12,
+            "favourite": false
+        },
+        {
+            "title": "ML Intro",
+            "salary": 7000,
+            "rate": 4.6,
+            "hours": 55,
+            "customers": 21,
+            "favourite": true
+        },
+        {
+            "title": "React Native Apps",
+            "salary": 6500,
+            "rate": 4.9,
+            "hours": 60,
+            "customers": 19,
+            "favourite": true
+        },
+        {
+            "title": "Algorithms Guide",
+            "salary": 7200,
+            "rate": 4.8,
+            "hours": 50,
+            "customers": 9,
+            "favourite": false
+        },
+        {
+            "title": "Cloud Basics",
+            "salary": 4800,
+            "rate": 4.7,
+            "hours": 40,
+            "customers": 17,
+            "favourite": true
+        },
+        {
+            "title": "SQL Mastery",
+            "salary": 5300,
+            "rate": 4.6,
+            "hours": 35,
+            "customers": 14,
+            "favourite": false
+        },
+        {
+            "title": "Cybersecurity 101",
+            "salary": 6800,
+            "rate": 4.5,
+            "hours": 45,
+            "customers": 20,
+            "favourite": true
+        },
+        {
+            "title": "Node.js Full Stack",
+            "salary": 7500,
+            "rate": 4.8,
+            "hours": 65,
+            "customers": 11,
+            "favourite": true
+        },
+        {
+            "title": "Agile Dev Methods",
+            "salary": 5900,
+            "rate": 4.7,
+            "hours": 40,
+            "customers": 8,
+            "favourite": false
+        }
+    ],
+    "onTop": [
+        {
+            "title": "AI With ChatGPT",
+            "salary": 9000,
+            "rate": 4.9,
+            "hours": 30,
+            "customers": 21,
+            "favourite": true
+        },
+        {
+            "title": "Blockchain Basics",
+            "salary": 8000,
+            "rate": 4.8,
+            "hours": 40,
+            "customers": 19,
+            "favourite": true
+        },
+        {
+            "title": "Web3 Development",
+            "salary": 8500,
+            "rate": 4.7,
+            "hours": 35,
+            "customers": 15,
+            "favourite": true
+        },
+        {
+            "title": "DevOps Essentials",
+            "salary": 7800,
+            "rate": 4.6,
+            "hours": 50,
+            "customers": 18,
+            "favourite": true
+        },
+        {
+            "title": "Cloud With AWS",
+            "salary": 9200,
+            "rate": 4.9,
+            "hours": 45,
+            "customers": 20,
+            "favourite": true
+        },
+        {
+            "title": "Tailwind CSS Mastery",
+            "salary": 6500,
+            "rate": 4.7,
+            "hours": 25,
+            "customers": 14,
+            "favourite": false
+        },
+        {
+            "title": "Vue 3 Advanced",
+            "salary": 7000,
+            "rate": 4.8,
+            "hours": 30,
+            "customers": 17,
+            "favourite": true
+        },
+        {
+            "title": "React Server Components",
+            "salary": 9500,
+            "rate": 4.9,
+            "hours": 40,
+            "customers": 21,
+            "favourite": true
+        },
+        {
+            "title": "Next.js 13 Masterclass",
+            "salary": 8800,
+            "rate": 4.8,
+            "hours": 35,
+            "customers": 16,
+            "favourite": true
+        },
+        {
+            "title": "Kubernetes Basics",
+            "salary": 8000,
+            "rate": 4.7,
+            "hours": 45,
+            "customers": 19,
+            "favourite": false
+        },
+        {
+            "title": "TypeScript Deep Dive",
+            "salary": 7200,
+            "rate": 4.6,
+            "hours": 30,
+            "customers": 12,
+            "favourite": true
+        }
+    ]
+}
