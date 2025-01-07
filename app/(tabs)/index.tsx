@@ -1,4 +1,4 @@
-import Section from '@/components/HomeComponents/Section';
+import Section from '@/components/forHome/Section';
 import AcornText from '@/components/UI/AcornText';
 import { Colors } from '@/constants/Colors';
 import { AppContext } from '@/hooks/AppContext';

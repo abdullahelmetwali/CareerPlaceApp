@@ -19,7 +19,7 @@ export default function RootLayout() {
   return (
     <>
       <AppProvider>
-        <Stack screenOptions={{ headerShown: false, statusBarBackgroundColor: whatMode.background, statusBarStyle: 'auto' }}>
+        <Stack screenOptions={{ headerShown: false, statusBarBackgroundColor: whatMode.background, statusBarStyle: 'auto', }}>
           <Stack.Screen name="(tabs)" />
         </Stack>
       </AppProvider>

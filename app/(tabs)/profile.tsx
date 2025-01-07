@@ -5,9 +5,9 @@ import { Colors } from "@/constants/Colors";
 import AcornText from "@/components/UI/AcornText";
 import * as SecureStorge from 'expo-secure-store';
 import React, { useEffect, useState } from "react";
-import Statics from "@/components/ProfileComponents/Statics";
-import Portfolio from "@/components/ProfileComponents/Portfolio";
-import Reviews from "@/components/ProfileComponents/Reviews";
+import Statics from "@/components/forProfile/Statics";
+import Portfolio from "@/components/forProfile/Portfolio";
+import Reviews from "@/components/forProfile/Reviews";
 
 
 const Profile: React.FC = () => {

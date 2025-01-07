@@ -2,17 +2,18 @@ import AcornText from "@/components/UI/AcornText";
 import { Colors } from "@/constants/Colors";
 import { Bell, ChevronRight } from "lucide-react-native";
 import React, { useContext, useState } from "react";
-import { Alert, Image, Modal, Pressable, ScrollView, StyleSheet, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
+import { Alert, Image, Modal, Platform, Pressable, ScrollView, StyleSheet, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 import * as SecureStorge from 'expo-secure-store'
 import ScreenHeader from "@/components/UI/ScreenHeader";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase/config";
-import EditProfile from "@/components/SettingsComponents/EditProfile";
-import AboutApp from "@/components/SettingsComponents/AboutApp";
-import Payment from "@/components/SettingsComponents/Payment";
-import Support from "@/components/SettingsComponents/Support";
+import EditProfile from "@/components/forSettings/EditProfile";
+import AboutApp from "@/components/forSettings/AboutApp";
+import Payment from "@/components/forSettings/Payment";
+import Support from "@/components/forSettings/Support";
 import { useRouter } from "expo-router";
 import { AppContext } from "@/hooks/AppContext";
+import SettingBtn from "@/components/forSettings/ui/SettingBtn";
 
 const Settings: React.FC = () => {
     const router = useRouter();
@@ -61,37 +62,10 @@ const Settings: React.FC = () => {
             </View>
             <View style={{ gap: 5 }}>
 
-                <Pressable
-                    accessibilityLabel="Edit Profile"
-                    style={styles.box}
-                    onPress={() => setSeenModal({ modal: 'EditProfile', visible: true })}
-                >
-                    <AcornText children="Edit Profile" style={{ fontSize: 20, color: whatMode.text }} />
-                    <ChevronRight color={whatMode.text} size={22} />
-                </Pressable>
-
-                <Pressable style={styles.box}
-                    onPress={() => setSeenModal({ modal: 'Payment', visible: true })}
-                >
-                    <AcornText children="Payment" style={{ fontSize: 20, color: whatMode.text }} />
-                    <ChevronRight color={whatMode.text} size={22} />
-                </Pressable>
-
-                <Pressable
-                    style={styles.box}
-                    onPress={() => setSeenModal({ modal: 'Support', visible: true })}
-                >
-                    <AcornText children="Support" style={{ fontSize: 20, color: whatMode.text }} />
-                    <ChevronRight color={whatMode.text} size={22} />
-                </Pressable>
-
-                <Pressable
-                    style={styles.box}
-                    onPress={() => setSeenModal({ modal: 'AboutTheApp', visible: true })}
-                >
-                    <AcornText children="About the app" style={{ fontSize: 20, color: whatMode.text }} />
-                    <ChevronRight color={whatMode.text} size={22} />
-                </Pressable>
+                <SettingBtn color={whatMode.text} modal="EditProfile" title="Edit Profile" setSeenModal={setSeenModal} />
+                <SettingBtn color={whatMode.text} modal="Payment" title="Payment" setSeenModal={setSeenModal} />
+                <SettingBtn color={whatMode.text} modal="Support" title="Support" setSeenModal={setSeenModal} />
+                <SettingBtn color={whatMode.text} modal="AboutTheApp" title="About the app" setSeenModal={setSeenModal} />
 
             </View>
             <Pressable onPress={LogOut}>
@@ -99,9 +73,10 @@ const Settings: React.FC = () => {
                     Log out
                 </AcornText>
             </Pressable>
+
             <Modal
                 visible={seenModal.visible}
-                animationType={'slide'}
+                animationType={Platform.OS === 'ios' ? 'slide' : 'fade'}
                 transparent={true}
             >
                 <TouchableWithoutFeedback
@@ -130,18 +105,11 @@ const styles = StyleSheet.create({
         height: 126,
         borderRadius: 100
     },
-    box: {
-        justifyContent: 'space-between',
-        alignItems: 'flex-end',
-        flexDirection: 'row',
-        padding: 7,
-        paddingHorizontal: 18
-    },
     modalOverlay: {
         flex: 1,
         justifyContent: 'flex-end',
         alignItems: 'center',
-        backgroundColor: 'rgba(0, 0, 0, 0.63)',
+        backgroundColor: 'rgba(0, 0, 0, 0.77)',
     },
     moduleContent: {
         padding: 20,
