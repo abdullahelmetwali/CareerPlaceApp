@@ -295,7 +295,7 @@
         "location": "Mountain View, CA, USA",
         "experience": "Senior",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Linkedin-logo-blue-In-square-40px.png"
     },
     {
         "title": "Software Engineer",
@@ -304,7 +304,7 @@
         "location": "Menlo Park, CA, USA",
         "experience": "Junior",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/c/c3/FB_Logo_PNG.png"
     },
     {
         "title": "Backend Developer",
@@ -313,7 +313,7 @@
         "location": "Seattle, WA, USA",
         "experience": "Mid-level",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/2/2d/Twitter_X.png"
     },
     {
         "title": "UX/UI Designer",
@@ -322,7 +322,7 @@
         "location": "Cupertino, CA, USA",
         "experience": "Senior",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/600px-Apple_logo_black.svg.png"
     },
     {
         "title": "Full-stack Developer",
@@ -331,7 +331,7 @@
         "location": "Redmond, WA, USA",
         "experience": "Mid-level",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/600px-Microsoft_logo.svg.png"
     },
     {
         "title": "Frontend Developer",
@@ -340,7 +340,7 @@
         "location": "San Francisco, CA, USA",
         "experience": "Senior",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/en/6/60/Twitter_Logo_as_of_2021.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/2/28/Amazon_Comcast.png"
     },
     {
         "title": "Product Manager",
@@ -349,7 +349,7 @@
         "location": "Sunnyvale, CA, USA",
         "experience": "Senior",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lenovo_Legion_Logo.png"
     },
     {
         "title": "Mobile Developer",
@@ -358,7 +358,7 @@
         "location": "Santa Monica, CA, USA",
         "experience": "Junior",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/en/a/ad/Snapchat_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Youtube-.png"
     },
     {
         "title": "Cloud Architect",
@@ -367,7 +367,7 @@
         "location": "Armonk, NY, USA",
         "experience": "Mid-level",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/600px-IBM_logo.svg.png"
     },
     {
         "title": "Data Scientist",
@@ -376,7 +376,7 @@
         "location": "Los Gatos, CA, USA",
         "experience": "Senior",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/600px-Netflix_2015_logo.svg.png"
     },
     {
         "title": "DevOps Engineer",
@@ -385,7 +385,7 @@
         "location": "San Jose, CA, USA",
         "experience": "Mid-level",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/7/76/Adobe_logo_%282020%29.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Google-favicon-vector.png"
     },
     {
         "title": "Web Developer",
@@ -394,7 +394,7 @@
         "location": "Stockholm, Sweden",
         "experience": "Junior",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_with_text.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Spoity-logo.png"
     },
     {
         "title": "Machine Learning Engineer",
@@ -403,7 +403,7 @@
         "location": "Palo Alto, CA, USA",
         "experience": "Senior",
         "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Tesla_Model_3_Logo.png"
     },
     {
         "title": "System Administrator",
@@ -412,8 +412,7 @@
         "location": "Redwood City, CA, USA",
         "experience": "Mid-level",
         "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/600px-Oracle_logo.svg.png"
     }
 ]
-
 }
