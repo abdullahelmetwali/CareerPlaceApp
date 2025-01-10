@@ -1,4 +1,14 @@
 {
+    "trends": [
+        "SWE",
+        "ReactNative",
+        "JavaScript",
+        "Game Dev",
+        "Marketing",
+        "UI/UX",
+        "TypeScript",
+        "Java 🍵"
+    ],
     "courses": [
         {
             "title": "Frontend Developer",
@@ -276,5 +286,134 @@
             "customers": 12,
             "favourite": true
         }
-    ]
+    ],
+    "jobs":[
+    {
+        "title": "Frontend Developer",
+        "company": "Google",
+        "jobPlace": "Hybrid",
+        "location": "Mountain View, CA, USA",
+        "experience": "Senior",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+    },
+    {
+        "title": "Software Engineer",
+        "company": "Facebook",
+        "jobPlace": "Remote",
+        "location": "Menlo Park, CA, USA",
+        "experience": "Junior",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+    },
+    {
+        "title": "Backend Developer",
+        "company": "Amazon",
+        "jobPlace": "On-site",
+        "location": "Seattle, WA, USA",
+        "experience": "Mid-level",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg"
+    },
+    {
+        "title": "UX/UI Designer",
+        "company": "Apple",
+        "jobPlace": "Hybrid",
+        "location": "Cupertino, CA, USA",
+        "experience": "Senior",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+    },
+    {
+        "title": "Full-stack Developer",
+        "company": "Microsoft",
+        "jobPlace": "Remote",
+        "location": "Redmond, WA, USA",
+        "experience": "Mid-level",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+    },
+    {
+        "title": "Frontend Developer",
+        "company": "Twitter",
+        "jobPlace": "Hybrid",
+        "location": "San Francisco, CA, USA",
+        "experience": "Senior",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/en/6/60/Twitter_Logo_as_of_2021.svg"
+    },
+    {
+        "title": "Product Manager",
+        "company": "LinkedIn",
+        "jobPlace": "Remote",
+        "location": "Sunnyvale, CA, USA",
+        "experience": "Senior",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+    },
+    {
+        "title": "Mobile Developer",
+        "company": "Snapchat",
+        "jobPlace": "On-site",
+        "location": "Santa Monica, CA, USA",
+        "experience": "Junior",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/en/a/ad/Snapchat_logo.svg"
+    },
+    {
+        "title": "Cloud Architect",
+        "company": "IBM",
+        "jobPlace": "Hybrid",
+        "location": "Armonk, NY, USA",
+        "experience": "Mid-level",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg"
+    },
+    {
+        "title": "Data Scientist",
+        "company": "Netflix",
+        "jobPlace": "Remote",
+        "location": "Los Gatos, CA, USA",
+        "experience": "Senior",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+    },
+    {
+        "title": "DevOps Engineer",
+        "company": "Adobe",
+        "jobPlace": "Hybrid",
+        "location": "San Jose, CA, USA",
+        "experience": "Mid-level",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/7/76/Adobe_logo_%282020%29.svg"
+    },
+    {
+        "title": "Web Developer",
+        "company": "Spotify",
+        "jobPlace": "Remote",
+        "location": "Stockholm, Sweden",
+        "experience": "Junior",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_with_text.svg"
+    },
+    {
+        "title": "Machine Learning Engineer",
+        "company": "Tesla",
+        "jobPlace": "On-site",
+        "location": "Palo Alto, CA, USA",
+        "experience": "Senior",
+        "favourite": true,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Tesla_Motors_logo.svg"
+    },
+    {
+        "title": "System Administrator",
+        "company": "Oracle",
+        "jobPlace": "Hybrid",
+        "location": "Redwood City, CA, USA",
+        "experience": "Mid-level",
+        "favourite": false,
+        "img": "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
+    }
+]
+
 }

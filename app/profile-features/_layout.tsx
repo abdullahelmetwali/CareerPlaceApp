@@ -5,6 +5,7 @@ export default function ProfileLayout() {
         <Stack screenOptions={{ headerShown: false }}>
             <Stack.Screen name="settings" />
             <Stack.Screen name="notifications" />
+            <Stack.Screen name="favourites" />
         </Stack>
     )
 }

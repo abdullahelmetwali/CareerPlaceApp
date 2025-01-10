@@ -1,12 +1,12 @@
 import { useFonts } from 'expo-font';
-import { Tabs, useNavigation } from 'expo-router';
+import { Tabs, Redirect } from 'expo-router';
 import * as SecureStorage from 'expo-secure-store';
 import { useContext, useEffect } from 'react';
 import { BriefcaseBusiness, CalendarRange, Pentagon, Search, UserRound } from 'lucide-react-native';
-import { AppContext } from '@/hooks/AppContext';
+import { AppContext } from '@/context/AppContext';
+import { StyleSheet } from 'react-native';
 
 export default function RootLayout() {
-    const navigation = useNavigation();
     const { setGlobalUsr } = useContext(AppContext);
     const [loaded] = useFonts({
         'acorn-semib': require('../../assets/fonts/Acorn-SemiBold.ttf'),
@@ -18,10 +18,17 @@ export default function RootLayout() {
         try {
             const user = await SecureStorage.getItemAsync('usr');
             if (user) {
-                setGlobalUsr(JSON.parse(user).displayName.split(' ')[0]);
-                navigation.navigate('/' as never);
+                setGlobalUsr({
+                    usr: JSON.parse(user).displayName.split(' ')[0],
+                    isThereIsUsr: true
+                });
+                <Redirect href={`/(tabs)`} />
             } else {
-                navigation.navigate('/auth/login/index' as never);
+                setGlobalUsr({
+                    usr: 'Guest-777',
+                    isThereIsUsr: false
+                });
+                <Redirect href={`/auth/login`} />
             }
         } catch (error) {
             console.error('Error checking user:', error);
@@ -43,18 +50,7 @@ export default function RootLayout() {
             <Tabs
                 screenOptions={{
                     headerShown: false,
-                    tabBarStyle: {
-                        backgroundColor: '#2F2F2F',
-                        borderTopWidth: 0,
-                        position: 'absolute',
-                        bottom: 10,
-                        borderRadius: 30,
-                        height: 48,
-                        paddingTop: 4,
-                        marginHorizontal: 9,
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    },
+                    tabBarStyle: styles.container,
                     tabBarActiveTintColor: 'white',
                     tabBarInactiveTintColor: '#6C6C6C',
                     tabBarLabelStyle: {
@@ -110,4 +106,20 @@ export default function RootLayout() {
             </Tabs>
         </>
     );
-}
+};
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        elevation: 0,
+        borderTopWidth: 0,
+        position: 'absolute',
+        bottom: 10,
+        borderRadius: 30,
+        height: 48,
+        paddingTop: 4,
+        marginHorizontal: 9,
+        alignItems: 'center',
+        justifyContent: 'center',
+    }
+})

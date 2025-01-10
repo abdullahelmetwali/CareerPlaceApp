@@ -1,5 +1,5 @@
 import { Colors } from '@/constants/Colors';
-import { AppProvider } from '@/hooks/AppContext';
+import { AppProvider } from '@/context/AppContext';
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { useColorScheme } from 'react-native';

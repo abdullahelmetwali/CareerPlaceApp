@@ -1,6 +1,6 @@
 import AcornText from "@/components/UI/AcornText";
 import { Colors } from "@/constants/Colors";
-import { Bell, ChevronRight } from "lucide-react-native";
+import { Bell } from "lucide-react-native";
 import React, { useContext, useState } from "react";
 import { Alert, Image, Modal, Platform, Pressable, ScrollView, StyleSheet, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 import * as SecureStorge from 'expo-secure-store'
@@ -12,7 +12,7 @@ import AboutApp from "@/components/forSettings/AboutApp";
 import Payment from "@/components/forSettings/Payment";
 import Support from "@/components/forSettings/Support";
 import { useRouter } from "expo-router";
-import { AppContext } from "@/hooks/AppContext";
+import { AppContext } from "@/context/AppContext";
 import SettingBtn from "@/components/forSettings/ui/SettingBtn";
 
 const Settings: React.FC = () => {
@@ -30,7 +30,7 @@ const Settings: React.FC = () => {
         try {
             await signOut(auth);
             await SecureStorge.deleteItemAsync('usr');
-            router.push({ pathname: '/' })
+            router.push('/(tabs)')
         } catch (err) {
             Alert.alert('Error', 'Something went wrong', [{ text: 'OK' }], { cancelable: true })
         }
@@ -58,7 +58,7 @@ const Settings: React.FC = () => {
             />
             <View style={styles.centerBox}>
                 <Image source={profileImg} style={styles.profileImg} />
-                <AcornText style={{ fontSize: 24, color: whatMode.text }} children={globalUsr} />
+                <AcornText style={{ fontSize: 24, color: whatMode.text }} children={globalUsr.usr} />
             </View>
             <View style={{ gap: 5 }}>
 
@@ -73,7 +73,6 @@ const Settings: React.FC = () => {
                     Log out
                 </AcornText>
             </Pressable>
-
             <Modal
                 visible={seenModal.visible}
                 animationType={Platform.OS === 'ios' ? 'slide' : 'fade'}

@@ -3,14 +3,8 @@ import { Content } from "@/interfaces/Types";
 import React from "react";
 import AcornText from "../UI/AcornText";
 import { Heart, Star } from "lucide-react-native";
+import { useRandomColor } from "@/hooks/useRandomColor";
 
-const randomSoftColors = () => {
-    const randomChannel = () => Math.floor(200 + Math.random() * 180); // FOR SOFT , LIGHT COLORS
-    const r = randomChannel();
-    const g = randomChannel();
-    const b = randomChannel();
-    return `rgb(${r}, ${g}, ${b})`;
-};
 const imgs = [
     require('@/assets/images/25.png'),
     require('@/assets/images/30.png'),
@@ -22,10 +16,10 @@ const imgs = [
 
 const Section: React.FC<{ data: Content[] }> = ({ data }) => {
     const contentBox = (item: Content) => {
-        const randomBackgroundColor = randomSoftColors();
+        const randomSoftColor = useRandomColor(180);
         const randomImg = imgs[Math.floor(Math.random() * imgs.length)];
         return (
-            <View style={{ backgroundColor: randomBackgroundColor, ...styles.mainBox }}>
+            <View style={{ backgroundColor: randomSoftColor, ...styles.mainBox }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <AcornText children={item.title} style={styles.title} />
                     <Pressable style={styles.favBox}>
@@ -36,18 +30,18 @@ const Section: React.FC<{ data: Content[] }> = ({ data }) => {
                 <AcornText children={`${item.salary}$`} style={styles.salary} />
                 <View style={styles.detailsContainer}>
                     <View style={{ ...styles.detailsBox, flexDirection: 'row', alignItems: 'center' }}>
-                        <Star color={randomBackgroundColor} size={20} fill={'#1a1a1a'} />
-                        <Text style={{ color: randomBackgroundColor, fontSize: 14 }} >
+                        <Star color={randomSoftColor} size={20} fill={'#1a1a1a'} />
+                        <Text style={{ color: randomSoftColor, fontSize: 14 }} >
                             {item.rate}
                         </Text>
                     </View>
                     <View style={styles.detailsBox}>
-                        <Text style={{ color: randomBackgroundColor, fontSize: 14 }}>
+                        <Text style={{ color: randomSoftColor, fontSize: 14 }}>
                             {item.hours} Hours
                         </Text>
                     </View>
                     <View style={styles.detailsBox}>
-                        <Text style={{ color: randomBackgroundColor, fontSize: 14 }}>
+                        <Text style={{ color: randomSoftColor, fontSize: 14 }}>
                             {item.customers}K People
                         </Text>
                     </View>

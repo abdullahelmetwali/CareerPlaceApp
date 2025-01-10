@@ -2,13 +2,13 @@ import Button from "@/components/UI/Button";
 import { Colors } from "@/constants/Colors";
 import { auth } from "@/firebase/config";
 import * as SecureStore from 'expo-secure-store';
-import { useNavigation } from "expo-router";
+import { useRouter } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { ActivityIndicator, Alert, Keyboard, KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
 
 const Login: React.FC = () => {
-    const navigation = useNavigation();
+    const route = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const [usrDT, setUsrDT] = useState<{ email: string, password: string }>({
@@ -28,7 +28,7 @@ const Login: React.FC = () => {
                 const response = await signInWithEmailAndPassword(auth, usrDT.email, usrDT.password);
                 if (response.user) {
                     await SecureStore.setItemAsync('usr', JSON.stringify(response.user));
-                    navigation.navigate('Profile' as never);
+                    route.replace('/(tabs)/profile');
                 }
             } catch (error) {
                 setErr(error ? 'Please , check your email or password' : 'An error occurred');
@@ -79,6 +79,9 @@ const Login: React.FC = () => {
                     </View>
                     <Button OnPress={submitFunc} pressStyle={styles.submitBtn} btnStyle={{ color: 'black' }} >
                         {isLoading ? <ActivityIndicator size={30} color={`#fff`} /> : 'Submit'}
+                    </Button>
+                    <Button OnPress={() => route.push('/auth/register')} pressStyle={styles.submitBtn} btnStyle={{ color: 'black' }} >
+                        Create Account
                     </Button>
                 </KeyboardAvoidingView>
             </SafeAreaView>
@@ -131,7 +134,9 @@ const styles = StyleSheet.create({
         width: 360,
         fontFamily: 'acorn-semib',
         fontWeight: 'bold',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
 })
 export default Login;

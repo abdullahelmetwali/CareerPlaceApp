@@ -1,75 +1,103 @@
-import { useRouter } from "expo-router";
-import { Image, Platform, Pressable, ScrollView, StyleSheet, useColorScheme, View } from "react-native"
+import { Link, useRouter } from "expo-router";
+import { Image, Platform, Pressable, ScrollView, StyleSheet, Text, useColorScheme, View } from "react-native"
 import { Bolt, Bell } from "lucide-react-native"
 import { Colors } from "@/constants/Colors";
 import AcornText from "@/components/UI/AcornText";
 import * as SecureStorge from 'expo-secure-store';
-import React, { useEffect, useState } from "react";
-import Statics from "@/components/forProfile/Statics";
-import Portfolio from "@/components/forProfile/Portfolio";
-import Reviews from "@/components/forProfile/Reviews";
+import React, { useContext, useLayoutEffect, useState } from "react";
+import Statics from "@/components/profile/Statics";
+import Portfolio from "@/components/profile/Portfolio";
+import Reviews from "@/components/profile/Reviews";
+import { AppContext } from "@/context/AppContext";
 
 
 const Profile: React.FC = () => {
+    const { globalUsr, setGlobalUsr } = useContext(AppContext);
     const router = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const profileImg = require('@/assets/images/profile-img.jpg');
-    const [usrName, setUsrName] = useState('Guest-777');
     const [view, setView] = useState('Statics');
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         async function getUsr() {
             const usr = await SecureStorge.getItemAsync('usr') || null;
             if (usr) {
-                setUsrName(JSON.parse(usr).displayName);
+                setGlobalUsr({
+                    usr: JSON.parse(usr).displayName,
+                    isThereIsUsr: true
+                });
+            } else {
+                setGlobalUsr({
+                    usr: 'Guest-777',
+                    isThereIsUsr: false
+                });
             }
         }
         getUsr();
     }, []);
 
     const whatView = {
-        Statics: <Statics usrname={usrName} />,
+        Statics: <Statics usrname={globalUsr.usr} />,
         Portfolio: <Portfolio />,
         Reviews: <Reviews />,
-        default: <Statics usrname={usrName} />,
+        default: <Statics usrname={globalUsr.usr} />,
     }
     return (
         <ScrollView style={[{ backgroundColor: whatMode.background }]} contentContainerStyle={styles.container}>
             <View style={styles.flexBox}>
-                <Pressable onPress={() => router.push('/profile-features/settings')}>
+                <Pressable onPress={() => {
+                    if (globalUsr.isThereIsUsr) router.push('/profile-features/settings')
+                }}>
                     <Bolt size={29} color={whatMode.text} />
                 </Pressable>
                 <AcornText style={{ fontSize: 23, color: whatMode.text }} children={"My Profile"} />
-                <Pressable onPress={() => router.push('/profile-features/notifications')}>
+                <Pressable onPress={() => {
+                    if (globalUsr.isThereIsUsr) router.push('/profile-features/notifications')
+                }}>
                     <Bell color={whatMode.text} size={26} />
                 </Pressable>
             </View>
-            <View style={styles.centerBox}>
-                <Image source={profileImg} style={styles.profileImg} />
-                <AcornText style={{ fontSize: 24, color: whatMode.text }} children={usrName} />
-            </View>
-            <View style={[styles.userInfo, { borderColor: whatMode.text }]}>
-                <Pressable onPress={() => setView('Statics')}>
-                    <AcornText
-                        style={[view === 'Statics' && styles.selectedView,
-                        styles.userInfoTxt, { color: whatMode.text }]} children={"Statics"} />
-                </Pressable>
-
-                <Pressable onPress={() => setView('Portfolio')}>
-                    <AcornText
-                        style={[view === 'Portfolio' && styles.selectedView,
-                        styles.userInfoTxt, { color: whatMode.text }]} children={"Portfolio"} />
-                </Pressable>
-
-                <Pressable onPress={() => setView('Reviews')}>
-                    <AcornText
-                        style={[view === 'Reviews' && styles.selectedView,
-                        styles.userInfoTxt, { color: whatMode.text }]} children={"Reviews"} />
-                </Pressable>
-            </View>
             <ScrollView>
-                {whatView[view as 'Statics' || 'Portfolio' || 'Reviews'] || whatView.default}
+                <View style={styles.centerBox}>
+                    <Image source={profileImg} style={styles.profileImg} />
+                    <AcornText style={{ fontSize: 24, color: whatMode.text }} children={globalUsr.usr} />
+                </View>
+                <View style={[styles.userInfo, { borderColor: whatMode.text }]}>
+                    <Pressable onPress={() => setView('Statics')}>
+                        <AcornText
+                            style={[view === 'Statics' && styles.selectedView,
+                            styles.userInfoTxt, { color: whatMode.text }]} children={"Statics"} />
+                    </Pressable>
+
+                    <Pressable onPress={() => setView('Portfolio')}>
+                        <AcornText
+                            style={[view === 'Portfolio' && styles.selectedView,
+                            styles.userInfoTxt, { color: whatMode.text }]} children={"Portfolio"} />
+                    </Pressable>
+
+                    <Pressable onPress={() => setView('Reviews')}>
+                        <AcornText
+                            style={[view === 'Reviews' && styles.selectedView,
+                            styles.userInfoTxt, { color: whatMode.text }]} children={"Reviews"} />
+                    </Pressable>
+                </View>
+                {
+                    globalUsr.isThereIsUsr ?
+                        whatView[view as 'Statics' || 'Portfolio' || 'Reviews'] || whatView.default
+                        :
+                        <View>
+                            <AcornText style={{ color: whatMode.muted, fontSize: 22, textAlign: 'center', marginVertical: 30 }}>
+                                No data seen , Please
+                                <AcornText style={{ color: '#D2FF1F', fontSize: 22, textDecorationLine: 'underline', textDecorationColor: '#D2FF1F' }} >
+                                    <Link href={`/auth/login`}>
+                                        {' '}Login{' '}
+                                    </Link>
+                                </AcornText>
+                                First
+                            </AcornText>
+                        </View>
+                }
             </ScrollView>
         </ScrollView>
     )
@@ -80,6 +108,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         paddingVertical: Platform.OS === 'ios' ? 25 : 10,
+        paddingBottom: 60
     },
     flexBox: {
         flexDirection: 'row',

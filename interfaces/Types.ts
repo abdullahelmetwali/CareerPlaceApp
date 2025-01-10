@@ -26,9 +26,12 @@ export interface Header {
 }
 
 export type AppContextType = {
-    globalUsr: string,
-    setGlobalUsr: React.Dispatch<React.SetStateAction<string>>
-}
+    globalUsr: {
+        usr: string,
+        isThereIsUsr: boolean
+    },
+    setGlobalUsr: React.Dispatch<React.SetStateAction<{ usr: string, isThereIsUsr: boolean }>>
+};
 
 export interface Content {
     title: string,
@@ -37,11 +40,21 @@ export interface Content {
     hours: number,
     customers: number,
     favourite: boolean
-}
+};
 
 export type SettingItemProps = {
     setSeenModal: Dispatch<SetStateAction<{ modal: string, visible: boolean }>>,
     color: ColorValue | string,
     title: string,
     modal: string
+};
+
+export interface Job {
+    title: string,
+    company: string,
+    jobPlace: string,
+    location: string,
+    experience: string,
+    favourite: boolean,
+    img: string,
 };
