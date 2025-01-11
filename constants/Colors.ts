@@ -12,7 +12,7 @@ export const Colors = {
   },
   dark: {
     text: '#ECEDEE',
-    background: '#1A1A1A',
+    background: '#010101',
     muted: '#a1a1aa',
     tint: tintColorDark,
     icon: '#9BA1A6',

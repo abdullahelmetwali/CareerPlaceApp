@@ -82,7 +82,7 @@ const Settings: React.FC = () => {
                     onPress={() => setSeenModal({ modal: '', visible: false })}
                 >
                     <View style={styles.modalOverlay}>
-                        <View style={[styles.moduleContent, { backgroundColor: whatMode.background }]}>
+                        <View style={{ ...styles.moduleContent, backgroundColor: whatMode.background }}>
                             {modals[seenModal.modal as 'EditProfile' || 'Payment' || 'Support' || 'AboutTheApp']}
                         </View>
                     </View>

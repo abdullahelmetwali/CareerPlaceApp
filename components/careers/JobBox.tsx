@@ -1,23 +1,125 @@
 import { Job } from "@/interfaces/Types";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, Modal, Pressable, StyleSheet, Text, TouchableWithoutFeedback, useColorScheme, View } from "react-native";
+import AcornText from "../UI/AcornText";
+import { Colors } from "@/constants/Colors";
+import { ArrowDownRight, Heart } from "lucide-react-native";
+import JobModal from "./JobModal";
+import { useState } from "react";
+import { ScrollView } from "react-native";
 
 const JobBox = ({ job }: { job: Job }) => {
+    const mode = useColorScheme();
+    const whatMode = Colors[mode || 'dark'];
+    const [seeModal, setSeenModal] = useState(false);
     return (
-        <View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                <View>
-                    <Image source={{ uri: job.img }} resizeMode="contain" style={{ width: 50, height: 50 }} />
+        <>
+            <View style={{ ...styles.box, backgroundColor: '#010101' }}>
+                <View style={{ ...styles.flex, alignItems: 'flex-start' }}>
+                    <View style={styles.flex}>
+                        <View style={styles.companyBox}>
+                            <Image source={{ uri: job.img }} resizeMode="contain" style={{ width: 23, height: 23, borderRadius: 0 }} />
+                        </View>
+                        <View>
+                            <AcornText children={job.title.length > 18 ? `${job.title.slice(0, 18)}...` : job.title} style={{ color: whatMode.text, fontSize: 18 }} />
+                            <AcornText children={job.company} style={{ color: whatMode.muted, fontSize: 15 }} />
+                        </View>
+                    </View>
+                    <View>
+                        <AcornText children={job.location} style={{ color: whatMode.text, fontSize: 14, marginTop: 5 }} />
+                    </View>
                 </View>
-                <Text>
-                    {job.title}
-                </Text>
+                <View style={{ marginVertical: 10, paddingHorizontal: 4 }}>
+                    <AcornText children={`${job.description.slice(0, 111)}...`} style={{ color: whatMode.text, fontSize: 15 }} />
+                </View>
+                <View style={styles.flex}>
+                    <View style={styles.flex}>
+                        <AcornText children={job.type} style={{ ...styles.jobDataBox, color: whatMode.text }} />
+                        <AcornText children={job.experience} style={{ ...styles.jobDataBox, color: whatMode.text }} />
+                    </View>
+                    <View style={styles.flex}>
+                        <Pressable style={styles.favBox}>
+                            <Heart size={22} fill={job.favourite ? '#C63F47' : 'white'} />
+                        </Pressable>
+                        <Pressable style={styles.favBox} onPress={() => setSeenModal(prev => !prev)}>
+                            <ArrowDownRight size={22} color={'#fff'} />
+                        </Pressable>
+                    </View>
+                </View>
             </View>
-        </View>
+            {
+                seeModal &&
+                <Modal
+                    transparent
+                    animationType="slide"
+                    style={{ justifyContent: 'flex-end' }}
+                >
+                    <TouchableWithoutFeedback onPress={() => setSeenModal(prev => !prev)}>
+                        <View style={{ flex: 1, backgroundColor: whatMode.background }}>
+                            <ScrollView contentContainerStyle={{ padding: 15, flexGrow: 1, backgroundColor: 'black' }}>
+                                <View style={{ flexDirection: 'column', backgroundColor: 'black' }}>
+                                    <Image source={{ uri: job.img }} style={{ width: 70, height: 70 }} />
+                                    <View>
+                                        {
+                                            [...Array(100)].map((_, index) => (
+                                                <Text key={index} style={{ color: 'white' }}>
+                                                    {index}
+                                                </Text>
+                                            ))
+                                        }
+                                        {/* <Text style={{ color: '#fff', fontSize: 25 }}>
+                                        </Text> */}
+                                    </View>
+                                </View>
+                            </ScrollView>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </Modal>
+            }
+        </>
     )
 };
 
 const styles = StyleSheet.create({
-
+    box: {
+        marginTop: 15,
+        borderRadius: 14,
+        paddingHorizontal: 7,
+        paddingVertical: 10,
+        borderColor: 'rgba(255, 255, 255, 0.4)',
+        borderWidth: 1
+    },
+    companyBox: {
+        backgroundColor: '#fff',
+        width: 36,
+        height: 36,
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    flex: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        gap: 8,
+        paddingHorizontal: 2
+    },
+    jobDataBox: {
+        paddingVertical: 3,
+        paddingHorizontal: 13,
+        borderColor: 'rgba(255, 255, 255, 0.4)',
+        borderWidth: 1,
+        borderRadius: 20,
+        fontSize: 15
+    },
+    favBox: {
+        backgroundColor: '#1a1a1a',
+        borderRadius: 100,
+        width: 35,
+        height: 35,
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 1,
+    },
 });
 
 export default JobBox;

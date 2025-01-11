@@ -52,9 +52,11 @@ export type SettingItemProps = {
 export interface Job {
     title: string,
     company: string,
-    jobPlace: string,
+    type: string,
     location: string,
     experience: string,
     favourite: boolean,
     img: string,
+    description: string,
+    requirements: string[]
 };

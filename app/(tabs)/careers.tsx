@@ -14,7 +14,7 @@ const Careers = () => {
     const jobs: Job[] = db.jobs;
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: whatMode.background, paddingBottom: 58 }}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: whatMode.background }}>
             <View style={styles.headerBox}>
                 <Pressable onPress={() => route.push('/profile-features/favourites')}>
                     <Heart color={whatMode.text} fill={whatMode.background} size={23} />
@@ -28,10 +28,12 @@ const Careers = () => {
                 data={jobs}
                 keyExtractor={(_, index) => `${index}`}
                 renderItem={({ item, index }) => (
-                    <JobBox job={item} key={index} />
+                    <View style={{ paddingBottom: jobs.length - 1 === index ? 80 : 0 }} key={index}>
+                        <JobBox job={item} />
+                    </View>
                 )}
-                style={{ padding: 15, marginBottom: 0 }}
-                ListHeaderComponent={<AcornText children="Jobs" style={{ color: whatMode.text, fontSize: 26, marginBottom: 1 }} />}
+                style={{ padding: 4, marginBottom: 0 }}
+                ListHeaderComponent={<AcornText children="Jobs" style={{ color: whatMode.text, fontSize: 26, marginBottom: 1, marginLeft: 8 }} />}
             />
         </SafeAreaView>
     )

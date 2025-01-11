@@ -1,9 +1,10 @@
-import { FlatList, Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { FlatList, Image, Pressable, StyleSheet, Text, View, ScrollView } from "react-native";
 import { Content } from "@/interfaces/Types";
 import React from "react";
 import AcornText from "../UI/AcornText";
 import { Heart, Star } from "lucide-react-native";
 import { useRandomColor } from "@/hooks/useRandomColor";
+// import { ScrollView } from "react-native-reanimated/lib/typescript/Animated";
 
 const imgs = [
     require('@/assets/images/25.png'),
@@ -23,12 +24,12 @@ const Section: React.FC<{ data: Content[] }> = ({ data }) => {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
                     <AcornText children={item.title} style={styles.title} />
                     <Pressable style={styles.favBox}>
-                        <Heart size={24} fill={item.favourite ? '#C63F47' : 'white'} />
+                        <Heart size={24} fill={item.favourite ? '#C63F47' : 'white'} color={`transparent`} />
                     </Pressable>
                 </View>
                 <Image source={randomImg} style={styles.img} />
                 <AcornText children={`${item.salary}$`} style={styles.salary} />
-                <View style={styles.detailsContainer}>
+                <ScrollView horizontal contentContainerStyle={styles.detailsContainer}>
                     <View style={{ ...styles.detailsBox, flexDirection: 'row', alignItems: 'center' }}>
                         <Star color={randomSoftColor} size={20} fill={'#1a1a1a'} />
                         <Text style={{ color: randomSoftColor, fontSize: 14 }} >
@@ -45,7 +46,7 @@ const Section: React.FC<{ data: Content[] }> = ({ data }) => {
                             {item.customers}K People
                         </Text>
                     </View>
-                </View>
+                </ScrollView>
             </View>
         );
     };
@@ -56,7 +57,7 @@ const Section: React.FC<{ data: Content[] }> = ({ data }) => {
             data={data}
             horizontal
             renderItem={({ item }) => contentBox(item)}
-            keyExtractor={(item, index) => `${index}`}
+            keyExtractor={(_, index) => `${index}`}
             snapToAlignment="start"
             scrollEnabled={true}
             showsHorizontalScrollIndicator={false}
@@ -96,11 +97,11 @@ const styles = StyleSheet.create({
     },
     detailsContainer: {
         flexDirection: 'row',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         gap: 3,
         position: 'absolute',
         bottom: 12,
-        left: 10
+        left: 0
     },
     favBox: {
         backgroundColor: '#1A1A1A',
