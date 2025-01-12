@@ -34,7 +34,7 @@ const Search: React.FC = () => {
             </View>
             <ScrollView>
                 <AcornText children="Popular Search" style={{ ...styles.mainTitle, marginTop: 10 }} />
-                <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 20 }}>
+                <View style={{ flexDirection: 'row', flexWrap: 'wrap', marginBottom: 20, paddingHorizontal: Platform.OS === 'ios' ? 10 : 0 }}>
                     {trends.map((item: string, index: number) => (
                         <Pressable key={index} style={{ borderColor: whatMode.muted, ...styles.trendWords }}>
                             <AcornText children={item} style={{
@@ -50,8 +50,8 @@ const Search: React.FC = () => {
                             <Text style={{ fontSize: 18, color: whatMode.text }}>
                                 {item}
                             </Text>
-                            <View style={styles.chevBox}>
-                                <ChevronRight color={'white'} size={22} />
+                            <View style={{ ...styles.chevBox, backgroundColor: whatMode.mutedTwo }}>
+                                <ChevronRight color={whatMode.text} size={22} />
                             </View>
                         </View>
                     ))}
@@ -60,7 +60,7 @@ const Search: React.FC = () => {
                     <Text style={styles.seeAll}>
                         See all
                     </Text>
-                    <ChevronRight size={21} color={`#D2FF1F`} />
+                    <ChevronRight size={21} color={`#C0B236`} />
                 </Pressable>
             </ScrollView>
         </SafeAreaView>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: Platform.OS === 'ios' ? 20 : 15,
         paddingBottom: 72,
-        paddingHorizontal: 10
+        paddingHorizontal: Platform.OS === 'ios' ? 25 : 10,
     },
     searchContainer: {
         position: 'relative',
@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
         borderRadius: 36,
         borderColor: '#6C6C6C',
         borderWidth: 1,
+        marginHorizontal: Platform.OS === 'ios' ? 8 : 0,
+        marginVertical: Platform.OS === 'ios' ? 10 : 0,
     },
     searchIcon: {
         position: 'absolute',
@@ -99,9 +101,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingHorizontal: Platform.OS === 'ios' ? 12 : 0
     },
     chevBox: {
-        backgroundColor: '#333333',
         borderRadius: 100,
         width: 26,
         height: 26,
@@ -110,14 +112,17 @@ const styles = StyleSheet.create({
         marginVertical: 4
     },
     seeAll: {
-        color: '#D2FF1F',
+        color: '#C0B236',
         fontSize: 20,
         textDecorationLine: 'underline',
         alignItems: 'center',
+        marginHorizontal: Platform.OS === 'ios' ? 10 : 0
+
     },
     mainTitle: {
-        color: '#D2FF1F',
-        fontSize: 22
+        color: '#C0B236',
+        fontSize: 22,
+        marginHorizontal: Platform.OS === 'ios' ? 10 : 0
     }
 });
 export default Search;

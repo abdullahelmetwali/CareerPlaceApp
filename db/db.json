@@ -289,6 +289,7 @@
     ],
     "jobs":[
     {
+        "id": 1,
         "title": "Frontend Developer",
         "company": "LinkedIn",
         "type": "Hybrid",
@@ -306,6 +307,7 @@
         ]
     },
     {
+        "id": 2,
         "title": "Software Engineer",
         "company": "Facebook",
         "type": "Remote",
@@ -323,6 +325,7 @@
         ]
     },
     {
+        "id": 3,
         "title": "Backend Developer",
         "company": "X",
         "type": "On-site",
@@ -340,6 +343,7 @@
         ]
     },
     {
+        "id": 4,
         "title": "UX/UI Designer",
         "company": "Apple",
         "type": "Hybrid",
@@ -357,6 +361,7 @@
         ]
     },
     {
+        "id": 5,
         "title": "Full-stack Developer",
         "company": "Microsoft",
         "type": "Remote",
@@ -372,126 +377,9 @@
             "Experience with CI/CD pipelines and cloud platforms.",
             "Excellent debugging and problem-solving skills."
         ]
-    },
-    {
-        "title": "Product Manager",
-        "company": "Lenovo",
-        "type": "Remote",
-        "location": "Sunnyvale, USA",
-        "experience": "Senior",
-        "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/d/d0/Lenovo_Legion_Logo.png",
-        "description": "As a Product Manager at Lenovo, you will oversee the entire product lifecycle, from ideation to launch. You will collaborate with cross-functional teams to define product strategies, prioritize features, and ensure alignment with user needs and business goals. This role demands creativity, leadership, and data-driven decision-making.",
-        "requirements": [
-            "Bachelor’s degree in Business, Engineering, or a related field.",
-            "5+ years of experience in product management.",
-            "Strong analytical and project management skills.",
-            "Experience working with Agile methodologies.",
-            "Excellent communication and leadership abilities."
-        ]
-    }, {
-        "title": "Mobile Developer",
-        "company": "Youtube",
-        "type": "On-site",
-        "location": "Santa Monica, USA",
-        "experience": "Junior",
-        "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Youtube-.png",
-        "description": "As a Mobile Developer at Youtube, you will work on developing and enhancing our mobile applications. You will collaborate with designers and backend engineers to implement engaging features, improve app performance, and ensure a seamless user experience across iOS and Android platforms.",
-        "requirements": [
-            "Bachelor’s degree in Computer Science or related field.",
-            "1-2 years of experience in mobile application development.",
-            "Proficiency in Swift (iOS) or Kotlin (Android).",
-            "Knowledge of RESTful APIs and mobile UI/UX design principles.",
-            "Familiarity with version control systems like Git."
-        ]
-    },
-    {
-        "title": "Cloud Architect",
-        "company": "IBM",
-        "type": "Hybrid",
-        "location": "Armonk, NY, USA",
-        "experience": "Mid-level",
-        "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/600px-IBM_logo.svg.png",
-        "description": "As a Cloud Architect at IBM, you will design, implement, and manage cloud infrastructure solutions. You will work closely with development teams to optimize cloud-based applications, ensuring scalability, security, and cost-effectiveness. This role involves staying updated with the latest trends in cloud technology.",
-        "requirements": [
-            "Bachelor’s degree in Computer Science or equivalent experience.",
-            "3+ years of experience in cloud architecture and deployment.",
-            "Proficiency in AWS, Azure, or Google Cloud.",
-            "Experience with containerization tools like Docker and Kubernetes.",
-            "Strong understanding of networking and security best practices."
-        ]
-    },
-    {
-        "title": "Data Scientist",
-        "company": "Netflix",
-        "type": "Remote",
-        "location": "Los Gatos, USA",
-        "experience": "Senior",
-        "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/600px-Netflix_2015_logo.svg.png",
-        "description": "As a Data Scientist at Netflix, you will analyze complex datasets to uncover insights that drive decision-making and enhance user engagement. Your role involves building predictive models, running experiments, and collaborating with engineering teams to improve the platform's personalization and recommendation systems.",
-        "requirements": [
-            "Master’s or PhD in Data Science, Statistics, or related field.",
-            "5+ years of experience in data science or analytics.",
-            "Proficiency in Python, R, or SQL.",
-            "Experience with machine learning frameworks and big data technologies.",
-            "Strong analytical and problem-solving skills."
-        ]
-    },
-    {
-        "title": "DevOps Engineer",
-        "company": "Google",
-        "type": "Hybrid",
-        "location": "San Jose, USA",
-        "experience": "Mid-level",
-        "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Google-favicon-vector.png",
-        "description": "As a DevOps Engineer at Google, you will automate and streamline the deployment process for Google products and services. You will ensure the reliability and scalability of the infrastructure by leveraging modern DevOps tools and practices.",
-        "requirements": [
-            "Bachelor’s degree in Computer Science or equivalent experience.",
-            "3-5 years of experience in DevOps or related fields.",
-            "Proficiency in CI/CD pipelines, Jenkins, or GitLab.",
-            "Experience with infrastructure-as-code tools like Terraform or Ansible.",
-            "Strong scripting skills in Python, Bash, or similar."
-        ]
-    },
-    {
-        "title": "Machine Learning Engineer",
-        "company": "Tesla",
-        "type": "On-site",
-        "location": "Palo Alto, USA",
-        "experience": "Senior",
-        "favourite": true,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Tesla_Model_3_Logo.png",
-        "description": "As a Machine Learning Engineer at Tesla, you will design and implement machine learning models to enhance Tesla’s AI systems, including autonomous driving technologies. This role requires expertise in data preprocessing, model training, and deployment in production environments.",
-        "requirements": [
-            "Master’s degree in Computer Science, AI, or related field.",
-            "5+ years of experience in machine learning or AI development.",
-            "Proficiency in Python, TensorFlow, or PyTorch.",
-            "Experience with large-scale data processing and model optimization.",
-            "Strong problem-solving and teamwork skills."
-        ]
-    },
-    {
-        "title": "System Administrator",
-        "company": "Oracle",
-        "type": "Hybrid",
-        "location": "Redwood City, USA",
-        "experience": "Mid-level",
-        "favourite": false,
-        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/600px-Oracle_logo.svg.png",
-        "description": "As a System Administrator at Oracle, you will manage and maintain Oracle’s IT infrastructure, ensuring optimal performance and security. Your responsibilities include server configuration, network management, and troubleshooting hardware and software issues.",
-        "requirements": [
-            "Bachelor’s degree in IT, Computer Science, or related field.",
-            "3+ years of experience in system administration.",
-            "Proficiency in Linux/Unix and Windows environments.",
-            "Experience with virtualization and cloud platforms.",
-            "Strong knowledge of networking protocols and security best practices."
-        ]
     }
 ]
+
 
 
 }

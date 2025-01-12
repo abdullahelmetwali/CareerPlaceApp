@@ -6,8 +6,10 @@ import { ArrowDownRight, Heart } from "lucide-react-native";
 import JobModal from "./JobModal";
 import { useState } from "react";
 import { ScrollView } from "react-native";
+import { Link, useRouter } from "expo-router";
 
 const JobBox = ({ job }: { job: Job }) => {
+    const router = useRouter();
     const mode = useColorScheme();
     const whatMode = Colors[mode || 'dark'];
     const [seeModal, setSeenModal] = useState(false);
@@ -40,41 +42,19 @@ const JobBox = ({ job }: { job: Job }) => {
                         <Pressable style={styles.favBox}>
                             <Heart size={22} fill={job.favourite ? '#C63F47' : 'white'} />
                         </Pressable>
-                        <Pressable style={styles.favBox} onPress={() => setSeenModal(prev => !prev)}>
-                            <ArrowDownRight size={22} color={'#fff'} />
-                        </Pressable>
+                        <View style={{ ...styles.favBox }} >
+                            <Link
+                                href={{
+                                    pathname: '/job/[jobID]',
+                                    params: { jobID: job.id }
+                                }}
+                            >
+                                <ArrowDownRight size={22} color={'#fff'} />
+                            </Link>
+                        </View>
                     </View>
                 </View>
             </View>
-            {
-                seeModal &&
-                <Modal
-                    transparent
-                    animationType="slide"
-                    style={{ justifyContent: 'flex-end' }}
-                >
-                    <TouchableWithoutFeedback onPress={() => setSeenModal(prev => !prev)}>
-                        <View style={{ flex: 1, backgroundColor: whatMode.background }}>
-                            <ScrollView contentContainerStyle={{ padding: 15, flexGrow: 1, backgroundColor: 'black' }}>
-                                <View style={{ flexDirection: 'column', backgroundColor: 'black' }}>
-                                    <Image source={{ uri: job.img }} style={{ width: 70, height: 70 }} />
-                                    <View>
-                                        {
-                                            [...Array(100)].map((_, index) => (
-                                                <Text key={index} style={{ color: 'white' }}>
-                                                    {index}
-                                                </Text>
-                                            ))
-                                        }
-                                        {/* <Text style={{ color: '#fff', fontSize: 25 }}>
-                                        </Text> */}
-                                    </View>
-                                </View>
-                            </ScrollView>
-                        </View>
-                    </TouchableWithoutFeedback>
-                </Modal>
-            }
         </>
     )
 };
